@@ -1,0 +1,43 @@
+name: Data Preprocessing Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: pip install pandas numpy scikit-learn
+
+      - name: Data Preprocessing - Clean
+        run: python app.py clean_data
+
+      - name: Data Preprocessing - Add
+        run: python app.py add_data
+
+      - name: Data Preprocessing - Modify
+        run: python app.py modify_data
+
+      - name: Data Preprocessing - Divide
+        run: python app.py divide_data
+
+      - name: Create Zip Archive
+        run: zip -r data.zip train.csv test.csv
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: data
+          path: data.zip
