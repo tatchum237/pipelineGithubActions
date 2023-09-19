@@ -22,16 +22,16 @@ jobs:
         run: pip install pandas numpy scikit-learn
 
       - name: Data Preprocessing - Clean
-        run: python app.py clean_data
+        run: python githubCI_CD/app.py clean_data
 
       - name: Data Preprocessing - Add
-        run: python app.py add_data
+        run: python githubCI_CD/app.py add_data
 
       - name: Data Preprocessing - Modify
-        run: python app.py modify_data
+        run: python githubCI_CD/app.py modify_data
 
       - name: Data Preprocessing - Divide
-        run: python app.py divide_data
+        run: python githubCI_CD/app.py divide_data
 
       - name: Create Zip Archive
         run: zip -r data.zip train.csv test.csv
