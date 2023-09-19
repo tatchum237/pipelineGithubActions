@@ -7,7 +7,7 @@ import os
 
 
 def load_data():
-    return pd.read_csv('data/COURSE_house (1).csv')
+    return pd.read_csv('githubCI_CD/data/COURSE_house (1).csv')
 
 def clean_data(data):
     # Supprimer les lignes dupliquées
